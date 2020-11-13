@@ -2,7 +2,7 @@
 <HTML>
 
 <HEAD>
-    <META http-equiv="Content-Type" content="text/html; charset=Big5">
+    <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <TITLE>Upload.html</TITLE>
     <style>
          #preview{
@@ -25,25 +25,25 @@
         <div>
             <input type="file" id="p_file"  name="upfile1" >
             <br>
-            <div id="preview"><span class="text">¹wÄı¹Ï</span></div>
+            <div id="preview"><span class="text">é è¦½åœ–</span></div>
             <br>
             <input type="file" id="p_file2"  name="upfile2" >
            
         </div>
         <br>
         <input type="hidden" name="action" value="upload">
-        <input type="submit" value="¤W¶Ç">
+        <input type="submit" value="ä¸Šå‚³">
     </FORM>
     <script>
-        //«Å§iÅÜ¼Æ
+        //å®£å‘Šè®Šæ•¸
         var p_file_el = document.getElementById("p_file");
         var preview_el = document.getElementById("preview");
         var p_file_el2 = document.getElementById("p_file2");
         var preview_el2 = document.getElementById("preview2");
-         // =========================== ³z¹L File ¨ú±o¹wÄı¹Ï ========================= //
+         // =========================== é€é File å–å¾—é è¦½åœ– ========================= //
         var preview_img = function(file){
           var img_node = document.createElement("img");
-          var reader = new FileReader(); // ¥Î¨ÓÅª¨úÀÉ®×
+          var reader = new FileReader(); // ç”¨ä¾†è®€å–æª”æ¡ˆ
           reader.addEventListener("load", function () {
             console.log(reader.result);
             let img_node = document.createElement("img");
@@ -52,14 +52,14 @@
             preview_el.innerHTML = '';
             preview_el.append(img_node);
           });
-          reader.readAsDataURL(file); // Åª¨úÀÉ®×
+          reader.readAsDataURL(file); // è®€å–æª”æ¡ˆ
         };
 
         p_file_el.addEventListener("change", function(e){
           if(this.files.length > 0){
             preview_img(this.files[0]);
           }else{
-            preview_el.innerHTML = '<span class="text">¹wÄı¹Ï</span>';
+            preview_el.innerHTML = '<span class="text">é è¦½åœ–</span>';
           }
         });
 
