@@ -62,6 +62,7 @@ public class UploadTest_Servlet3 extends HttpServlet {
 				out.println("<p>"+con++);
 			}
 		}
+		out.println("<p>file size"+fileSet.size());
 		out.println("</form>");
 		out.print("</BODY>");
 		out.println("</HTML>");
@@ -94,8 +95,10 @@ public class UploadTest_Servlet3 extends HttpServlet {
 				File f = new File(fsaveDirectory, filename);
 				// 利用File物件,寫入目地目錄,上傳成功
 				System.out.println("writefile");
+				System.out.println(f);
 				part.write(f.toString());
 				fileSet.add(f);
+//				fileSet.add(0, f);
 
 			}
 		}
@@ -108,9 +111,9 @@ public class UploadTest_Servlet3 extends HttpServlet {
 		System.out.println(del.length);
 		if (del.length > 0) {
 			for (int i = 0; i < del.length; i++) {
-				
+//				int j = Integer.parseInt(del[i]);
 				fileSet.remove(del[i]);
-				System.out.println(del[i]);
+//				System.out.println(j);
 			}
 			
 		}
