@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<HTML>
+
+<HEAD>
+    <META http-equiv="Content-Type" content="text/html; charset=Big5">
+    <TITLE>Upload.html</TITLE>
+    <style>
+         #preview{
+        border: 1px solid lightgray;
+        display: inline-block;
+        width: 100px;
+        min-height: 150px;
+        position: relative;
+      }
+      #preview img.preview_img{
+        width: 100%;
+      }
+    </style>
+</HEAD>
+
+<BODY bgcolor=lightblue>
+
+    <FORM action="uploadServlet3.do" method=post enctype="multipart/form-data">
+    
+        <div>
+            <input type="file" id="p_file"  name="upfile1" >
+            <br>
+            <div id="preview"><span class="text">預覽圖</span></div>
+            <br>
+            <input type="file" id="p_file2"  name="upfile2" >
+           
+        </div>
+        <br>
+        <input type="hidden" name="action" value="upload">
+        <input type="submit" value="上傳">
+    </FORM>
+    <script>
+        //宣告變數
+        var p_file_el = document.getElementById("p_file");
+        var preview_el = document.getElementById("preview");
+        var p_file_el2 = document.getElementById("p_file2");
+        var preview_el2 = document.getElementById("preview2");
+         // =========================== 透過 File 取得預覽圖 ========================= //
+        var preview_img = function(file){
+          var img_node = document.createElement("img");
+          var reader = new FileReader(); // 用來讀取檔案
+          reader.addEventListener("load", function () {
+            console.log(reader.result);
+            let img_node = document.createElement("img");
+            img_node.setAttribute("src", reader.result);
+            img_node.setAttribute("class", "preview_img");
+            preview_el.innerHTML = '';
+            preview_el.append(img_node);
+          });
+          reader.readAsDataURL(file); // 讀取檔案
+        };
+
+        p_file_el.addEventListener("change", function(e){
+          if(this.files.length > 0){
+            preview_img(this.files[0]);
+          }else{
+            preview_el.innerHTML = '<span class="text">預覽圖</span>';
+          }
+        });
+
+      //==============================file2==============================//
+
+
+        
+
+    </script>
+</BODY>
+
+
+</HTML>
